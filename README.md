@@ -70,13 +70,11 @@ A_State is a lightweight Lua runtime toolkit for Ntreev Soft's Alicia (앨리샤
 - `injector/` - injector source
 - `MinHook/` - MinHook git submodule dependency
 - `CMakeLists.txt` - build configuration
-- `CMakePresets.json` - presets for VS 2019/2022
-- `build.bat` - one-click build script for Windows
 
 ## Requirements
 
 - Windows
-- Visual Studio 2017, 2019, or 2022 (full IDE or **Build Tools** edition) with the **Desktop development with C++** workload
+- Visual Studio 2022 or another MSVC-compatible C++ toolchain
 - CMake 3.10+
 
 ## Building
@@ -89,20 +87,14 @@ cd A_State
 git submodule update --init --recursive
 ```
 
-### Option A — One-click (recommended)
-
-Double-click `build.bat`. It will auto-detect your Visual Studio install and build everything.
-
-### Option B — CMake presets
+Then build the project:
 
 ```bash
-cmake --preset vs2022-x86
-cmake --build --preset vs2022-x86
+cmake -S . -B build -A Win32
+cmake --build build --config Release
 ```
 
-Use `vs2019-x86` instead if you're on Visual Studio 2019.
-
-> **Important:** The project must be built targeting **x86 (Win32)**. Alicia is a 32-bit process and a 64-bit DLL will silently fail to inject.
+> **Important:** The `-A Win32` flag is required. Alicia is a 32-bit process and a 64-bit DLL will silently fail to inject.
 
 Build outputs:
 
