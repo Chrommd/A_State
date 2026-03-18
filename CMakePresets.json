@@ -1,0 +1,43 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "vs2022-x86",
+      "displayName": "VS 2022 - Win32 Release",
+      "generator": "Visual Studio 17 2022",
+      "architecture": { "value": "Win32", "strategy": "set" },
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "vs2019-x86",
+      "displayName": "VS 2019 - Win32 Release",
+      "generator": "Visual Studio 16 2019",
+      "architecture": { "value": "Win32", "strategy": "set" },
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "default",
+      "inherits": "vs2022-x86",
+      "displayName": "Default (VS 2022 Win32)"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "vs2022-x86",
+      "configurePreset": "vs2022-x86",
+      "configuration": "Release"
+    },
+    {
+      "name": "vs2019-x86",
+      "configurePreset": "vs2019-x86",
+      "configuration": "Release"
+    },
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "configuration": "Release"
+    }
+  ]
+}
